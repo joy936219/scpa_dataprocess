@@ -111,5 +111,5 @@ $msg .='\n';
 }
 //echo "匯入完成 將自動跳轉......";
 $msg .= '匯入完成';
-echo "<script>alert('$msg');window.location.href='http://120.119.80.10/scpa-dataprocess/import.html'</script>"; 
+echo "<script>alert('$msg');history.go(-1);</script>"; 
 ?>

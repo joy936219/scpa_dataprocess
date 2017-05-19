@@ -1,8 +1,8 @@
 <?php
    $server = "localhost";
-   $username = "root";
+   $username = "scpa";
    $password = "0813";
-   $database ="importtest";
+   $database ="scpa";
 
    $conn = mysqli_connect($server,$username,$password,$database);
 

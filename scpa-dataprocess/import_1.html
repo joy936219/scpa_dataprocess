@@ -1,0 +1,116 @@
+<head>
+    <title>資料匯入程式
+    </title>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="js/import.js">
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+    </script>
+    <style type="text/css">
+        .vertical-container {
+            height: 500px;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+        }
+        .left{
+            float: left;           
+            font-size: 20px;
+        }
+        .right {
+            float: right;
+        }
+        .container {
+            margin-top: 10%;
+        }
+        .form-box {}
+        .test{
+            display: block;
+        }
+    </style>
+</head>
+
+<body onload="seesioncheck()">
+    <div class="container">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a data-toggle="tab" href="#home">匯入</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#menu1">匯出</a>
+                </li>
+                <a class="right" onclick="logout()" href="">
+                登出
+                </a>
+            </ul>
+            <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                    <div class=""></div>
+                    <div class="">
+                        <h3>成功者落點分析資料匯入系統</h3>
+                        <form action="php/importData.php" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <label>匯入類別</label>
+                            <select id="opt" name="opt" class="form-control" onchange="FileType()">
+                                <option>甄選入學落點分析資料</option>
+                                <option>使用者帳號資料</option>
+                                <option>組距資料</option>
+                                <option>甄選+日間錄取資料</option>
+                                <option>分發預測錄取資料</option>
+                                <option>甄選日間分數對照資料</option>
+                            </select>
+                            <br>
+                            <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file_name[]" id="file_name" class="custom-file-input" onclick="FileType()" >
+                            <br>
+                            <label class="left"></label>
+                            <div class="form-group right">
+                                
+                                <a href="https://docs.google.com/document/d/1zYmzkCOoGCD4uPhFKEm2ceTBHxWPb1kQ6K5yPW7s4sU/edit?usp=sharing" target="_blank"  class="btn btn-success">Excel格式說明</a>
+                                <input type="submit" name="submit" id="submit" class="btn btn-success" value="上傳" onclick="return confirm('資料匯入前，會先將資料庫原資料刪除，才進行匯入，請問是否要匯入?');">
+                                
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div id="menu1" class="tab-pane fade">
+                    <form class="form-horizontal test" action="php/export_student.php" target="_blank">
+                        <h3>成功者落點分析資料匯出系統</h3>
+                        <div class="form-group">
+                            <label>匯出資料</label>
+                            <select class="form-control">
+                                <option>學生資料</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>匯出類別</label>
+                            <select class="form-control">
+                                <option>Excel</option>
+                            </select>
+                        </div>
+                        <div class="form-group right">
+
+                            <input type="submit" name="submit" id="submit" class="btn btn-success" value="匯出">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+
+</body>
+
+</html>
